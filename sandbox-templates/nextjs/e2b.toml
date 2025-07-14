@@ -1,0 +1,18 @@
+# This is a config for E2B sandbox template.
+# You can use template ID (vhc8inwbaqsf41rccv70) or template name (heart-doodle-222) to create a sandbox:
+
+# Python SDK
+# from e2b import Sandbox, AsyncSandbox
+# sandbox = Sandbox("heart-doodle-222") # Sync sandbox
+# sandbox = await AsyncSandbox.create("heart-doodle-222") # Async sandbox
+
+# JS SDK
+# import { Sandbox } from 'e2b'
+# const sandbox = await Sandbox.create('heart-doodle-222')
+
+team_id = "03e09bf4-ec78-4397-b162-6d6faf907108"
+start_cmd = "/compile_page.sh"
+dockerfile = "e2b.Dockerfile"
+template_name = "heart-doodle-222"
+template_id = "vhc8inwbaqsf41rccv70"
+
