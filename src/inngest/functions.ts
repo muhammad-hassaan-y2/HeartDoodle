@@ -1,5 +1,6 @@
 import { Sandbox } from "@e2b/code-interpreter";
-import { openai, createAgent, createTool, createNetwork, type Tool } from "@inngest/agent-kit";
+import { openai, createAgent, createTool, createNetwork, type Tool, type Message,
+  createState } from "@inngest/agent-kit";
 
 import { inngest } from "./client";
 import { getSandbox, lastAssistantTextMessageContent } from "./utils";
@@ -24,6 +25,42 @@ export const codeAgentFunction = inngest.createFunction(
        const sandbox = await Sandbox.create("heart-doodle-222");
        return sandbox.sandboxId;
     })
+
+    const previousMessages = await step.run("get-previous-messages", async () => {
+      //const formattedMessages: Message[] = [];
+       
+      const formattedMessages : Message[] = [];
+
+      const messages = await prisma.message.findMany({
+        where: {
+          projectId: event.data.projectId,
+        },
+        orderBy: {
+          createdAt: "desc",
+        }
+      });
+
+      for (const message of messages) {
+          formattedMessages.push({
+            type: "text",
+            role: message.role === "ASSISTANT" ? "assistant" : "user",
+            content: message.content,
+          })
+      }
+
+      return formattedMessages;
+   });
+
+   const state = createState<AgentState>(
+    {
+      summary: "",
+      files: {},
+   },
+   {
+     messages: previousMessages,
+   }
+  )
+
 
     const codeAgent = createAgent<AgentState>({
       name: "code-agent",
