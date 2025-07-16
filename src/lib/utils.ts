@@ -77,7 +77,7 @@ export function convertFilesToTreeItems(
 
     return children;
   }
-
+ 
   const result = convertNode(tree);
   return Array.isArray(result) ? result : [result];
 }

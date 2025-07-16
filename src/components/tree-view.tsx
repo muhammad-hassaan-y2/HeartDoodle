@@ -33,7 +33,14 @@ export const TreeView = ({ data, value, onSelect }: TreeViewProps) => {
           <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
-
+                 {data.map((item, index) => (
+                  <Tree 
+                    key={index}
+                    item={item}
+                    selectedValue={value}
+                    onSelect={onSelect}
+                    parentPath="" />
+                 ))}
 
               </SidebarMenu>
             </SidebarGroupContent>
