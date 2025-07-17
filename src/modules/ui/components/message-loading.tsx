@@ -43,7 +43,7 @@ export const MessageLoading = () => {
           height={18}
           className="shrink-0"
         />
-        <span className="text-sm font-medium">Vibe</span>
+        <span className="text-sm font-medium">Heart Doodle</span>
       </div>
       <div className="pl-8.5 flex flex-col gap-y-4">
         <ShimmerMessages />

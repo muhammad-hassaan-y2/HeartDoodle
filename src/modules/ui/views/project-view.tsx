@@ -16,7 +16,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { FileExplorer } from "@/components/file-explorer";
-import { UserControl } from "@/components/user-control";
+
 
 
 interface Props {
@@ -26,14 +26,18 @@ interface Props {
 export const ProjectView = ({ projectId }: Props) => {
   const { has } = useAuth();
   const hasProAccess = has?.({ plan: "pro" });
+  console.log(hasProAccess)
+
   const [activeFragment, setActiveFragment] = useState<Fragment | null>(null);
   const [tabState, setTabState] = useState<"preview" | "code">("preview");
 
     const trpc = useTRPC();
     const { data: project } = useSuspenseQuery(trpc.projects.getOne.queryOptions({
         id: projectId,
+        
      }))
-   
+     console.log(project)
+
    return (
     <div className="h-screen">
       <ResizablePanelGroup direction="horizontal">

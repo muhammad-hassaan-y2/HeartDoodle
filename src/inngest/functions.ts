@@ -60,7 +60,7 @@ export const codeAgentFunction = inngest.createFunction(
      messages: previousMessages,
    }
   )
-
+   console.log(state)
 
     const codeAgent = createAgent<AgentState>({
       name: "code-agent",

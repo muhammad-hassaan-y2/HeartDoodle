@@ -1,8 +1,8 @@
 "use client"
 
 import Image from "next/image";
-import { ProjectForm } from "@/modules/home/ui/component/project-form"
-import { ProjectsList } from "@/modules/home/ui/component/project-list"
+import { ProjectForm } from "@/modules/home/ui/components/project-form"
+import { ProjectsList } from "@/modules/home/ui/components/project-list"
 
 const Page = () => {
   return (

@@ -5,13 +5,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import TextareaAutosize from "react-textarea-autosize";
 import { ArrowUpIcon, Loader2Icon } from "lucide-react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
 import { useTRPC } from "@/trpc/client";
 import { Button } from "@/components/ui/button";
 import { Form, FormField } from "@/components/ui/form";
-import { Usage } from "./usage";
-import { useRouter } from "next/navigation";
+// import { Usage } from "./usage";
+// import { useRouter } from "next/navigation";
 
 interface Props {
   projectId: string;
@@ -26,7 +26,7 @@ const formSchema = z.object({
 
 export const MessageForm = ({ projectId }: Props) => {
   const trpc = useTRPC();
-  const router = useRouter();
+  // const router = useRouter();
   const queryClient = useQueryClient();
 
  const createMessage = useMutation(trpc.messages.create.mutationOptions(
@@ -46,7 +46,7 @@ export const MessageForm = ({ projectId }: Props) => {
     }
   }));
 
-  
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
